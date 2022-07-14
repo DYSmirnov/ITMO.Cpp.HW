@@ -27,6 +27,14 @@ public:
 	
 	double get_average_score();
 
+	class ExScore
+	{
+	public:
+		string origin;
+		int inValue;
+		ExScore(string, int);
+	};
+
 private:
 	int scores[5];
 	double average_score;

@@ -5,6 +5,8 @@ using namespace std;
 
 Time::Time(int hours, int minutes, int seconds)
 {
+	if (hours < 0 || minutes < 0 || seconds < 0)
+		throw ExNegativNumber("Время не может быть отрицательным. Введено некорректное значение.");
 	Time::set_hours(hours);
 	Time::set_minutes(minutes);
 	Time::set_seconds(seconds);
@@ -70,4 +72,10 @@ Time Time::operator+(Time t2)
 			(Time::get_minutes() + t2.get_minutes()),
 			(Time::get_seconds() + t2.get_seconds()));
 	
+}
+
+//Lab9.2
+Time::ExNegativNumber::ExNegativNumber(string n)
+{
+	Time::ExNegativNumber::nobj = n;
 }

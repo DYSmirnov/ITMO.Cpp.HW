@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -28,6 +29,14 @@ public:
 	void showTime();
 
 	Time operator+(Time);
+
+	//Lab9.2
+	class ExNegativNumber
+	{
+	public:
+		string nobj;
+		ExNegativNumber(string);
+	};
 
 private:
 	int hours;

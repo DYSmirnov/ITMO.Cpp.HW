@@ -1,5 +1,6 @@
+
 #include "student.h"
-#include <string>
+//#include <string>
 //#include <iostream>
 #include <fstream>
 
@@ -37,6 +38,8 @@ void Student::set_scores(int student_scores[])
 {
 	for (int i = 0; i < 5; ++i)
 	{
+		if (student_scores[i] > 5 )
+			throw ExScore("в функции set_scores() ", student_scores[i]);
 		Student::scores[i] = student_scores[i];
 	}
 }
@@ -67,4 +70,11 @@ void Student::save()
 Student::~Student()
 {
 	Student::save();
+}
+
+
+Student::ExScore::ExScore(string ori, int sc)
+{
+	origin = ori; //строка с именем виновника ошибки
+	inValue = sc; //сохраненное неправильное значение
 }

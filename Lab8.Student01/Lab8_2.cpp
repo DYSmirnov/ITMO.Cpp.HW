@@ -2,11 +2,20 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-#include <numeric>
+
 
 using namespace std;
 
-
+int sum(int arr[])
+{
+	int sum = 0;
+	for (int i = 0; i < 5; ++i)
+	{
+		
+		sum += arr[i];
+	}
+	return sum;
+}
 int main()
 {
 	/*
@@ -73,7 +82,7 @@ int main()
 	delete student02;
 
 #pragma endregion
-*/
+
 
 #pragma region 8.4
 
@@ -101,13 +110,13 @@ int main()
 	delete student;
 
 #pragma endregion
-
+*/
 
 #pragma region 8.5
-
-
+	system("chcp 1251");
+	
 	Student* student1 = new Student("Василий", "Федоров");
-	int score1[] = { 5,4,5,3,3};
+	int score1[] = { 8,4,5,3,3};
 	Student* student2 = new Student("Иван", "Сидоров");
 	int score2[] = { 5,5,3,4,5};
 	Student* student3 = new Student("Андрей", "Иванов");
@@ -115,13 +124,25 @@ int main()
 
 
 
-	student1->set_scores(score1);
-	student1->set_average_score((accumulate(begin(score1), end(score1), 0, plus<int>())) / 5.0);
-	student2->set_scores(score2);
-	student2->set_average_score((accumulate(begin(score2), end(score2), 0, plus<int>())) / 5.0);
-	student3->set_scores(score3);
-	student3->set_average_score((accumulate(begin(score3), end(score3), 0, plus<int>())) / 5.0);
 
+#pragma region lab9
+	try
+	{
+	student1->set_scores(score1);
+	student1->set_average_score((sum(score1)) / 5.0);
+	student2->set_scores(score2);
+	student2->set_average_score((sum(score2)) / 5.0);
+	student3->set_scores(score3);
+	student3->set_average_score((sum(score3)) / 5.0);
+	}
+	catch (Student::ExScore& ex)
+	{
+		cout << "\nОшибка инициализации " << ex.origin;
+		cout << "\nВведенное значение оценки " << ex.inValue << " является недопустимым\n";
+	}
+
+	cout << student1->get_average_score();
+#pragma endregion
 
 	delete student1;
 	delete student2;
@@ -129,5 +150,8 @@ int main()
 
 #pragma endregion
 
+
+
+	
 	return 0;
 }
