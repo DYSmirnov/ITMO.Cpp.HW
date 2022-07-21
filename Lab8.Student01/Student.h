@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+#include "IdCard.h"
+
 using namespace std;
 
 
@@ -8,6 +10,7 @@ class Student
 
 public:
 	Student(string, string);
+	Student(string , string , IdCard* );
 
 	void save();
 
@@ -35,9 +38,15 @@ public:
 		ExScore(string, int);
 	};
 
+	//Lab10
+	void setIdCard(IdCard* c);
+	IdCard getIdCard();
+
 private:
 	int scores[5];
 	double average_score;
 	string name;
 	string last_name;
+
+	IdCard* iCard;
 };

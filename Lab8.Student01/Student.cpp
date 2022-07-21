@@ -78,3 +78,21 @@ Student::ExScore::ExScore(string ori, int sc)
 	origin = ori; //строка с именем виновника ошибки
 	inValue = sc; //сохраненное неправильное значение
 }
+
+//Lab10
+Student::Student(string name, string last_name, IdCard *id)
+{
+	Student::set_name(name);
+	Student::set_last_name(last_name);
+	Student::setIdCard(id);
+}
+
+void Student::setIdCard(IdCard* c)
+{
+	iCard = c;
+}
+
+IdCard Student::getIdCard()
+{
+	return *iCard;
+}
